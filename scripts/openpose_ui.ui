@@ -363,7 +363,7 @@
     </layout>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="6,0,7,0,1,0,1">
+    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="6,0,6,1,0,1,0,1,0">
      <property name="spacing">
       <number>24</number>
      </property>
@@ -395,6 +395,26 @@
      </item>
      <item>
       <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="track_button">
+       <property name="text">
+        <string>track_on</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_5">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>

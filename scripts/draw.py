@@ -39,9 +39,15 @@ key = ["Nose",
 color = [x for x in range(0,255)]
 def just_right(keypoints,img):
     num=keypoints.shape[0]
+    value = []
     for i in range(0,num):
         value = keypoints[i,1:5,:2].astype(np.int)
         img = draw_py_points(value,key,img)
+        value = list(value)
+        d = keypoints[i,8,:2].astype(np.int)
+        if d[0]!=0 and d[1]!=0:
+            value.append(d)
+            img = choose_color_and_write(value[0],value[-1],img)
     return img,value
 def key_points(key,points):
     keypoints = dict(zip(key,points))
@@ -116,7 +122,7 @@ def people_box(keypoints,img):
     for i in range(0,num):
         value = keypoints[i,:,:2].astype(np.int)
     # rect = cv2.minAreaRect(value)
-        print(value)
+        #print(value)
         value = filter(lambda x:x[0]!=0 and x[1]!=0,value)
         value = np.array(value,dtype=int)
         x = list(value[:,0])
@@ -134,7 +140,7 @@ def people_box(keypoints,img):
 
 def cut_head_picture(keypoints,img):
     keypoints = key_points(key,keypoints)
-    print(img.shape)
+    #print(img.shape)
     pro = np.zeros((img.shape))
     if keypoints['Nose'][0]!=0 and keypoints['Nose'][1]!=0:
         x = keypoints['Nose'][0]
